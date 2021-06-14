@@ -87,6 +87,11 @@
     
     
   </ul>
+
+             <ul class="nav nav-pills navbar-right">
+                  <li><a href ="SignUp.aspx">SignUp</a> </li>
+                        <li ><a href ="SignIn.aspx">SignIn</a> </li>
+  </ul>
 </div>
 
                     
