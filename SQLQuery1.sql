@@ -8,17 +8,7 @@ Phone nvarchar(100) null,
 )
 select * from tblCustomer
 
-Create procedure PRO_UpdateData
-  @CustomerID int,
-  @CustomerName nvarchar(50),
-  @Address nvarchar(50),
-  @Email nvarchar(50),
-  @Phone nvarchar(50)
 
-  AS 
-  Begin
-  Update tblCustomer set CustomerName=@CustomerName,Address=@Address,Email=@Email,Phone=@Phone where CustomerID=@CustomerID
-  End
   
 
  create table tblProducts
@@ -37,6 +27,7 @@ select * from tblProducts
  create table tblCart
 (
 CartID int IDENTITY(1,1) NOT NULL,
+CustomertID int null,
 ProductID int null,
 ProductName nvarchar(100) null,
 Quantity nvarchar(100) null,
@@ -44,3 +35,12 @@ Price DECIMAL(10,2)
 
 )
 select * from tblCart
+
+create table tblUsers(
+UserID int IDENTITY(1,1) NOT NULL,
+Username nvarchar(100) null,
+Password nvarchar(100) null,
+Email nvarchar(100) null,
+
+)
+select * from tblUsers
