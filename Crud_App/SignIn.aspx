@@ -100,7 +100,7 @@
                     <div class ="col-md-2 "> </div>
                     <div class ="col-md-6 ">
 
-                        <asp:Label ID="lblError" CssClass ="text-danger " runat="server" ></asp:Label>
+                        <asp:Label ID="lblMsg" CssClass ="text-danger " runat="server" ></asp:Label>
                     </div>
                 </div>
 

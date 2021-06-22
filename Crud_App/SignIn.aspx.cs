@@ -37,79 +37,20 @@ namespace Crud_App
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                if (dt.Rows.Count != 0)
+                
+                clr();
+                con.Close();
+
+                if (dt.Rows.Count > 0)
                 {
-                    Session["USERID"] = dt.Rows[0]["Uid"].ToString();
-                    Session["USEREMAIL"] = dt.Rows[0]["Email"].ToString();
-                    Response.Cookies["UNAME"].Expires = DateTime.Now.AddDays(-1);
-                    Response.Cookies["UPWD"].Expires = DateTime.Now.AddDays(-1);
-
-                    if (CheckBox1.Checked)
-                    {
-                        Response.Cookies["UNAME"].Value = txtUsername.Text;
-                        Response.Cookies["UPWD"].Value = txtPass.Text;
-
-                        Response.Cookies["UNAME"].Expires = DateTime.Now.AddDays(10);
-
-                        Response.Cookies["UPWD"].Expires = DateTime.Now.AddDays(10);
-
-                    }
-                    else
-                    {
-                        Response.Cookies["UNAME"].Expires = DateTime.Now.AddDays(-1);
-
-                        Response.Cookies["UPWD"].Expires = DateTime.Now.AddDays(-1);
-                    }
-
-                    string Utype;
-                    Utype = dt.Rows[0][5].ToString().Trim();
-
-                    if (Utype == "User")
-                    {
-                        Session["Username"] = txtUsername.Text;
-                        Session["USEREMAIL"] = dt.Rows[0]["Email"].ToString();
-                       
-                        //Session["Mobile"] = dt.Rows[0]["Mobile"].ToString();
-                        Session["LoginType"] = "User";
-                        if (Request.QueryString["rurl"] != null)
-                        {
-                            if (Request.QueryString["rurl"] == "cart")
-                            {
-                                Response.Redirect("Cart.aspx");
-                            }
-
-                            if (Request.QueryString["rurl"] == "PID")
-                            {
-                                string myPID = Session["ReturnPID"].ToString();
-                                Response.Redirect("ProductView.aspx?PID=" + myPID + "");
-                            }
-                        }
-
-                        else
-                        {
-                            Response.Redirect("UserHome.aspx?UserLogin=YES");
-                        }
-
-
-
-                    }
-                    if (Utype == "Admin")
-                    {
-                        Session["Username"] = txtUsername.Text;
-                        Session["LoginType"] = "Admin";
-                        Response.Redirect("~/AdminHome.aspx");
-                    }
+                    Response.Redirect("ViewProduct.aspx");
                 }
                 else
                 {
-                    lblError.Text = "Invalid Username and password";
-                }
+                    lblMsg.Text = "Your username and word is incorrect";
+                    lblMsg.ForeColor = System.Drawing.Color.Red;
 
-                //Response.Write("<script> alert('Login Successfully done');  </script>");
-                clr();
-                con.Close();
-                //lblMsg.Text = "Registration Successfully done";
-                //lblMsg.ForeColor = System.Drawing.Color.Green;
+                }
 
             }
         }
