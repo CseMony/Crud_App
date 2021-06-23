@@ -24,5 +24,12 @@ namespace UnitTestProject1
             //assert part
             Assert.AreEqual(tp.Name, "Unit Testing");
         }
+
+        [TestMethod]
+        public void sumCheckTestMethod()
+        {
+            SignIn tp = new SignIn();
+            Assert.AreEqual(tp.test(), 4);
+        }
     }
 }

@@ -62,6 +62,11 @@ namespace Crud_App
             txtUsername.Focus();
 
         }
+        public int test()
+        {
+            int result = 2 + 2;
+            return result;
+        }
 
     }
 }
