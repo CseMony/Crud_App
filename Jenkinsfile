@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Test'){
             steps {
-                echo 'Testing the application' 
+               nunit testResultsPattern: 'TestResult.xml'
             }
         }
         stage('Deploy') {
