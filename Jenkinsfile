@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                echo 'Building the application' 
+                git 'https://github.com/CseMony/Crud_App.git' 
             }
         }
         stage('Test'){
